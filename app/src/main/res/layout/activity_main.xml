@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".MainActivity">
+    <include layout="@layout/header_main"/>
 
 
     <FrameLayout
@@ -23,6 +24,9 @@
         android:layout_alignParentBottom="true"
         android:background="#c8c8c8"
         app:itemActiveIndicatorStyle="@color/white"
+        app:itemIconTint="@color/bottom_navigation_selector"
         app:itemPaddingBottom="6dp"
-        app:itemPaddingTop="8dp" />
+        app:itemPaddingTop="8dp"
+        app:itemTextColor="@color/bottom_navigation_selector"
+        app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>
