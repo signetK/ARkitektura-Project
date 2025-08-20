@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
     >
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:background="@color/white"
-        android:orientation="horizontal"
-        android:elevation="100dp">
+        android:elevation="100dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/logo_id"
@@ -43,8 +43,7 @@
             android:layout_toStartOf="@+id/green"
             android:background="@color/yellow"
             android:rotation="40"
-            android:scaleY="100"
-       />
+            android:scaleY="100" />
 
         <View
             android:id="@+id/green"
