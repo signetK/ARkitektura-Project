@@ -10,11 +10,19 @@ import android.view.ViewGroup;
 
 import com.example.arkitektura.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Home#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.arkitektura.adapter.CollegeAdapter;
+import com.example.arkitektura.model.CollegeModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Home extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -25,6 +33,12 @@ public class Home extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+    private RecyclerView recyclerView;
+    private FloatingActionButton fabQR;
+    private List<CollegeModel> collegeList;
+
 
     public Home() {
         // Required empty public constructor
@@ -57,10 +71,31 @@ public class Home extends Fragment {
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        recyclerView = view.findViewById(R.id.Colleges);
+        fabQR = view.findViewById(R.id.QRScan);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        collegeList = new ArrayList<>();
+        collegeList.add(new CollegeModel(R.drawable.ui_coe,R.drawable.ic_ccis, "College of Computing and Information Sciences"));
+        collegeList.add(new CollegeModel(R.drawable.ui_coe,R.drawable.ic_coe, "College of Engineering"));
+        collegeList.add(new CollegeModel(R.drawable.ui_cas,R.drawable.ic_cas, "College of Arts and Sciences"));
+        collegeList.add(new CollegeModel(R.drawable.ui_cafsd,R.drawable.ic_cafsd, "College of Agriculture, Food, and Sustainable Development"));
+        collegeList.add(new CollegeModel(R.drawable.ui_cbea,R.drawable.ic_cbea, "College of Business, Entrepreneurship, and Accountancy"));
+        collegeList.add(new CollegeModel(R.drawable.ui_chs,R.drawable.ic_chs, "College of Health Sciences"));
+        collegeList.add(new CollegeModel(R.drawable.ui_col,R.drawable.ic_col, "College of Law"));
+        collegeList.add(new CollegeModel(R.drawable.ui_com,R.drawable.ic_com, "College of Medicine"));
+
+
+        CollegeAdapter adapter = new CollegeAdapter(collegeList);
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 }
