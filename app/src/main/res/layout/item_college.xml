@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:fillViewport="true">
 
     <LinearLayout
@@ -13,16 +13,20 @@
 
         <!-- CardView -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/collegeCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp"
-            app:cardBackgroundColor="#D9D9D9">
+            app:cardBackgroundColor="#D9D9D9"
+            android:clickable="true"
+            android:focusable="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:padding="8dp">
 
                 <ImageView
@@ -41,19 +45,20 @@
                     android:src="@drawable/ic_ccis" />
 
                 <TextView
-                    android:gravity="center"
                     android:id="@+id/collegeName"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:layout_alignTop="@+id/collegeImage"
+                    android:layout_alignBottom="@+id/collegeImage"
                     android:layout_marginStart="11dp"
                     android:layout_marginTop="55dp"
                     android:layout_toEndOf="@+id/collegeImage"
-                    android:layout_alignTop="@+id/collegeImage"
-                    android:layout_alignBottom="@+id/collegeImage"
-                    android:text="College Name"
+                    android:gravity="center"
+                    android:text="College of Computing and Information Sciences"
                     android:textAlignment="center"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
