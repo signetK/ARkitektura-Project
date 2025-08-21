@@ -41,6 +41,7 @@
                     android:src="@drawable/ic_ccis" />
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/collegeName"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
