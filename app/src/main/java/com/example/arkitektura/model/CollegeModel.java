@@ -1,18 +1,27 @@
 package com.example.arkitektura.model;
 
-public class CollegeModel {
-    private int imageRes;
-    private int logoRes;
-    private String name;
+import com.example.arkitektura.model.CollegeModel;
 
-    public CollegeModel(int imageRes, int logoRes, String name) {
+public class CollegeModel {
+    private final int imageRes;
+    private final int logoRes;
+    private final String name;
+    private final String history;
+    private final String info;
+
+    public CollegeModel(int imageRes, int logoRes, String name, String history, String info) {
         this.imageRes = imageRes;
         this.logoRes = logoRes;
         this.name = name;
+        this.history = history;
+        this.info = info;
     }
 
     public int getImageRes() { return imageRes; }
     public int getLogoRes() { return logoRes; }
     public String getName() { return name; }
+    public String getHistory() { return history; }
+    public String getInfo() { return info; }
 }
+
 

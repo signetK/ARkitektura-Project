@@ -1,6 +1,7 @@
 package com.example.arkitektura.adapter;
 
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,14 @@ public class CollegeAdapter extends RecyclerView.Adapter<CollegeAdapter.CollegeV
         holder.collegeName.setText(college.getName());
 
         holder.collegeCard.setOnClickListener(v -> {
-            Content content = Content.newInstance(college.getName(), "Some other param");
+            Content content = new Content();
+            Bundle args = new Bundle();
+            args.putInt("logo", college.getLogoRes());
+            args.putString("name", college.getName());
+            args.putString("history", college.getHistory());
+            args.putString("info", college.getInfo());
+            args.putBoolean("showBack", true);
+            content.setArguments(args);
 
             ((androidx.fragment.app.FragmentActivity)v.getContext()).getSupportFragmentManager()
                     .beginTransaction()

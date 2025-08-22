@@ -11,7 +11,6 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <!-- CardView -->
         <androidx.cardview.widget.CardView
             android:id="@+id/collegeCard"
             android:layout_width="match_parent"

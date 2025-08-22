@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.arkitektura.R;
 
@@ -58,9 +60,23 @@ public class Content extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_content, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_content, container, false);
+
+        ImageView collegeLogo = view.findViewById(R.id.collegeLogo);
+        TextView collegeName = view.findViewById(R.id.collegeTitle);
+        TextView collegeHistory = view.findViewById(R.id.collegeHistory);
+        TextView collegeInfo = view.findViewById(R.id.collegeInfo);
+
+        if (getArguments() != null) {
+            collegeLogo.setImageResource(getArguments().getInt("logo"));
+            collegeName.setText(getArguments().getString("name"));
+            collegeHistory.setText(getArguments().getString("history"));
+            collegeInfo.setText(getArguments().getString("info"));
+        }
+
+
+
+        return view;
     }
 }
