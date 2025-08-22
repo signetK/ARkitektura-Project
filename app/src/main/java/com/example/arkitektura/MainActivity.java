@@ -5,6 +5,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+
 import androidx.annotation.NonNull;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,14 +18,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.arkitektura.fragments.Home;
 import com.example.arkitektura.fragments.AboutUs;
-import com.example.arkitektura.fragments.Content;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -90,4 +90,5 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     };
+
 }

@@ -1,5 +1,7 @@
 package com.example.arkitektura.fragments;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,16 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.arkitektura.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Content#newInstance} factory method to
+ * Use the {@link Col#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Content extends Fragment {
+public class Col extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +30,7 @@ public class Content extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Content() {
+    public Col() {
         // Required empty public constructor
     }
 
@@ -38,11 +40,11 @@ public class Content extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Content.
+     * @return A new instance of fragment col.
      */
     // TODO: Rename and change types and number of parameters
-    public static Content newInstance(String param1, String param2) {
-        Content fragment = new Content();
+    public static Col newInstance(String param1, String param2) {
+        Col fragment = new Col();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,23 +62,35 @@ public class Content extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_content, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        ImageView collegeLogo = view.findViewById(R.id.collegeLogo);
-        TextView collegeName = view.findViewById(R.id.collegeTitle);
-        TextView collegeHistory = view.findViewById(R.id.collegeHistory);
-        TextView collegeInfo = view.findViewById(R.id.collegeInfo);
+        // Inflate the layout and store in a variable
+        View view = inflater.inflate(R.layout.fragment_col, container, false);
 
-        if (getArguments() != null) {
-            collegeLogo.setImageResource(getArguments().getInt("logo"));
-            collegeName.setText(getArguments().getString("name"));
-            collegeHistory.setText(getArguments().getString("history"));
-            collegeInfo.setText(getArguments().getString("info"));
-        }
+        // Find the arrow in the included header
+        ImageView backArrow = view.findViewById(R.id.arrow);
 
+        // Set the click listener
+        backArrow.setOnClickListener(v -> {
+            // Go back to Home fragment
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new Home())
+                    .commit();
+        });
 
-
+        // Return the view after setting up the listener
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_navigation);
+        bottomNav.setItemIconTintList(ColorStateList.valueOf(Color.BLACK));
+        bottomNav.setItemTextColor(ColorStateList.valueOf(Color.BLACK));
+    }
+
+
 }
