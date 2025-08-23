@@ -47,12 +47,13 @@
 
                         <TextView
                             android:id="@+id/collegeTitle"
-                            android:layout_width="228dp"
-                            android:layout_height="49dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
                             android:gravity="center"
                             android:text="@string/col_name"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"/>
                     </LinearLayout>
 
                     <Button
@@ -65,7 +66,8 @@
                         android:drawableLeft="@drawable/hollow_24"
                         android:drawablePadding="8dp"
                         android:text="Preview 3D Model"
-                        android:backgroundTint="@color/lighter" />
+                        android:backgroundTint="@color/lighter"
+                        android:textColor="@color/white"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -73,7 +75,8 @@
                         android:text="History :"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
-                        android:background="#DDDDDD" />
+                        android:background="#DDDDDD"
+                        android:textColor="@color/black"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -86,14 +89,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/col_history"
-                        android:layout_marginBottom="12dp" />
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Additional Info :"
                         android:textStyle="bold"
-                        android:layout_marginTop="8dp" />
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/black"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -106,7 +111,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/col_info"
-                        android:layout_marginBottom="12dp" />
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/black"/>
 
 
                 </LinearLayout>
