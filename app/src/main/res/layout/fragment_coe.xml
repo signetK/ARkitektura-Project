@@ -90,7 +90,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/coe_history"
                         android:layout_marginBottom="12dp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black"
+                        android:justificationMode="inter_word"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -112,7 +113,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/coe_info"
                         android:layout_marginBottom="12dp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black"
+                        android:justificationMode="inter_word"/>
 
                     <TextView
                         android:layout_width="wrap_content"
