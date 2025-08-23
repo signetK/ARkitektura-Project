@@ -5,5 +5,7 @@
     <color name="grey">#FFC8C8C8</color>
     <color name="green">#0C4B05</color>
     <color name="yellow">#FFCD00</color>
-    <color name="lightgreen">#37A22B</color>
+    <color name="lighter">#37A22B</color>
+    <color name="selected">#0C4B05</color>
+    <color name="unselected">#FF000000</color>
 </resources>

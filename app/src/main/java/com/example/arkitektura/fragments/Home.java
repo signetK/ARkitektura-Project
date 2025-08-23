@@ -10,11 +10,20 @@ import android.view.ViewGroup;
 
 import com.example.arkitektura.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Home#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.arkitektura.adapter.CollegeAdapter;
+import com.example.arkitektura.model.CollegeModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Home extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -25,6 +34,12 @@ public class Home extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+    private RecyclerView recyclerView;
+    private FloatingActionButton fabQR;
+    private List<CollegeModel> collegeList;
+
 
     public Home() {
         // Required empty public constructor
@@ -57,10 +72,63 @@ public class Home extends Fragment {
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        fabQR = view.findViewById(R.id.QRScan);
+
+        recyclerView = view.findViewById(R.id.Colleges);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        collegeList = new ArrayList<>();
+        collegeList.add(new CollegeModel(R.drawable.ui_coe,R.drawable.ic_ccis, "College of Computing and Information Sciences"));
+        collegeList.add(new CollegeModel(R.drawable.ui_coe,R.drawable.ic_coe, "College of Engineering"));
+        collegeList.add(new CollegeModel(R.drawable.ui_cas,R.drawable.ic_cas, "College of Arts and Sciences"));
+        collegeList.add(new CollegeModel(R.drawable.ui_cafsd,R.drawable.ic_cafsd, "College of Agriculture, Food, and Sustainable Development"));
+        collegeList.add(new CollegeModel(R.drawable.ui_cbea,R.drawable.ic_cbea, "College of Business, Entrepreneurship, and Accountancy"));
+        collegeList.add(new CollegeModel(R.drawable.ui_chs,R.drawable.ic_chs, "College of Health Sciences"));
+        collegeList.add(new CollegeModel(R.drawable.ui_col,R.drawable.ic_col, "College of Law"));
+        collegeList.add(new CollegeModel(R.drawable.ui_com,R.drawable.ic_com, "College of Medicine"));
+
+
+        CollegeAdapter adapter = new CollegeAdapter(collegeList);
+
+        adapter.setOnItemClickListener(position -> {
+            Fragment selectedFragment = null;
+
+            switch (position) {
+                case 0: selectedFragment = new Ccis(); break;
+                case 1: selectedFragment = new Coe(); break;
+                case 2: selectedFragment = new Cas(); break;
+                case 3: selectedFragment = new Cafsd(); break;
+                case 4: selectedFragment = new Cbea(); break;
+                case 5: selectedFragment = new Chs(); break;
+                case 6: selectedFragment = new Col(); break;
+                case 7: selectedFragment = new Com(); break;
+            }
+
+            if (selectedFragment != null) {
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BottomNavigationView bottomNav = getActivity().findViewById(R.id.bottom_navigation);
+        bottomNav.setItemIconTintList(getResources().getColorStateList(R.color.bottom_navigation_selector));
+        bottomNav.setItemTextColor(getResources().getColorStateList(R.color.bottom_navigation_selector));
+    }
+
 }
