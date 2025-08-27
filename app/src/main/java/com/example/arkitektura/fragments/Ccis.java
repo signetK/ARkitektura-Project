@@ -1,5 +1,6 @@
 package com.example.arkitektura.fragments;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -79,7 +80,15 @@ public class Ccis extends Fragment {
                     .replace(R.id.fragment_container, new Home())
                     .commit();
         });
+        View previewBtn = view.findViewById(R.id.previewBtn);
+        previewBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), com.example.arkitektura.activity.ARActivity.class);
 
+            // Pass which model to load (optional)
+            intent.putExtra("MODEL_PATH", "file:///android_asset/models/cat.glb");
+
+            startActivity(intent);
+        });
         // Return the view after setting up the listener
         return view;
     }

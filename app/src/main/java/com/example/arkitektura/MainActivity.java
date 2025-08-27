@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.arkitektura.fragments.Home;
 import com.example.arkitektura.fragments.AboutUs;
+import com.google.ar.core.ArCoreApk;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        ArCoreApk.getInstance().checkAvailabilityAsync(this, availability -> {
+            if (availability.isSupported()) {
+                Toast.makeText(this, "AR Supported", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "AR Not Supported", Toast.LENGTH_SHORT).show();
+            }
+        });
         checkCameraPermission();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);

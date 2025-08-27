@@ -130,4 +130,6 @@
     <string name="fb">Yaquobi</string>
     <string name="number">+63 9912345678</string>
     <string name="email">yaquobi@gmail.com</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,9 +1,11 @@
 package com.example.arkitektura.fragments;
 
 import android.os.Bundle;
-
+import android.content.Intent;
 import androidx.fragment.app.Fragment;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +17,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.arkitektura.adapter.CollegeAdapter;
 import com.example.arkitektura.model.CollegeModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends Fragment {
+
+    private final ActivityResultLauncher<ScanOptions> qrLauncher =
+            registerForActivityResult(new ScanContract(), result -> {
+                if (result.getContents() != null) {
+                    Toast.makeText(getContext(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                }
+            });
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,6 +91,15 @@ public class Home extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         fabQR = view.findViewById(R.id.QRScan);
+
+        fabQR.setOnClickListener(v -> {
+            ScanOptions options = new ScanOptions();
+            options.setPrompt("Scan a QR Code");
+            options.setBeepEnabled(true);
+            options.setOrientationLocked(true);
+            options.setCaptureActivity(CaptureAct.class);
+            qrLauncher.launch(options);
+        });
 
         recyclerView = view.findViewById(R.id.Colleges);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
