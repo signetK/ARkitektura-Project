@@ -82,12 +82,17 @@ public class Ccis extends Fragment {
         });
         View previewBtn = view.findViewById(R.id.previewBtn);
         previewBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), com.example.arkitektura.activity.ARActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("MODEL_PATH", "models/cat.glb");
 
-            // Pass which model to load (optional)
-            intent.putExtra("MODEL_PATH", "file:///android_asset/models/cat.glb");
+            ARFragment arFragment = new ARFragment();
+            arFragment.setArguments(bundle);
 
-            startActivity(intent);
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, arFragment)
+                    .addToBackStack(null)
+                    .commit();
         });
         // Return the view after setting up the listener
         return view;

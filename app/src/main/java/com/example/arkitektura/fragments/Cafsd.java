@@ -1,5 +1,6 @@
 package com.example.arkitektura.fragments;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -79,7 +80,20 @@ public class Cafsd extends Fragment {
                     .replace(R.id.fragment_container, new Home())
                     .commit();
         });
+        View previewBtn = view.findViewById(R.id.previewBtn);
+        previewBtn.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("MODEL_PATH", "models/dog.glb");
 
+            ARFragment arFragment = new ARFragment();
+            arFragment.setArguments(bundle);
+
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, arFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
         // Return the view after setting up the listener
         return view;
     }
